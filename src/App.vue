@@ -1,17 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    
+    <Quotes msg="Jorge Padilla alv"/>
+    <p v-for="(q, index) in quotes" :key="index">{{q}}</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Quotes from './components/Quotes.vue'
 
 export default {
   name: 'app',
+  mounted() {
+    this.$on('newQuote', (quote) => {
+      console.log('quote: ', quote)
+      this.quotes.push(quote)
+      })
+  },
   components: {
-    HelloWorld
+    Quotes
+  }, data(){
+    return{
+      quotes: ["algo"]
+    }
   }
 }
 </script>
