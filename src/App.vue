@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     
-    <Quotes msg="Jorge Padilla alv"/>
-    <p v-for="(q, index) in quotes" :key="index">{{q}}</p>
+    <Quotes msg="Jorge Padilla"/>
   </div>
+  
+
 </template>
 
 <script>
@@ -11,19 +12,20 @@ import Quotes from './components/Quotes.vue'
 
 export default {
   name: 'app',
-  mounted() {
-    this.$on('newQuote', (quote) => {
-      console.log('quote: ', quote)
-      this.quotes.push(quote)
-      })
-  },
+  //mounted() {
+    //this.$on('newQuote', (quote) => {
+      //console.log('quote: ')
+      //this.quotes.push(quotes)
+
+     // })
+ // },
   components: {
     Quotes
-  }, data(){
-    return{
-      quotes: ["algo"]
-    }
-  }
+  }//, data(){
+    //return{
+    //  quotes: []
+    //}
+  //}
 }
 </script>
 

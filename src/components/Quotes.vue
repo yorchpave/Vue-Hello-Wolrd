@@ -1,38 +1,73 @@
 <template>
   <div id='app'>
     {{msg}}
-    <p>perrro</p>
-    <textarea v-model="quote" name="textarea" id="ta" cols="30" rows="10"></textarea>
-    <input @click='addQuote' type="button" value="Add Quote" />
-    {{quote}}
+    <br>
+    <br>
+    <br>
+
+    <input v-model="message" placeholder="Add quote">
+    <!--<p>Message is: {{ message }}</p>-->
+    <input @click='addQuote()' type="button" value="Add Quote" />
+    <li v-for="(input, index) in quotes" :key="index">
+  
+    
+      <button v-on:click="removeElement()">{{input}}</button>
+
+    
 
 
+    
+    </li>
 
   
     
+
+
+    <br>
+    <br>
+    <br>
+
+  
+    
+
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+
   data(){
+
     return{
-      name: ' Jorge', 
-      quote: ''
+      message:'',
+      quotes: []
 
     }
 
+  },
+
+  props:{ //padre e hijo
+    msg: String
+    
   },
   methods:{
     addQuote(){
+  
+      this.quotes.push(this.message)
+      this.message = " "
       
-      this.$emit('newQuote', this.quote)
+  
+      //console.log(this.quotes)
+      
+      
+
+      },
+      removeElement(){
+        this.quotes.pop(this.input)
+      }
     }
-  }
+
+  
 
   
 }
