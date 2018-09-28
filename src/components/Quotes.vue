@@ -3,33 +3,15 @@
     {{msg}}
     <br>
     <br>
-    <br>
-
     <input v-model="message" placeholder="Add quote">
     <!--<p>Message is: {{ message }}</p>-->
     <input @click='addQuote()' type="button" value="Add Quote" />
+    <br>
     <li v-for="(input, index) in quotes" :key="index">
-  
-    
-      <button v-on:click="removeElement()">{{input}}</button>
 
-    
+      <h3 v-on:click="removeElement(input)">{{input}}</h3>  
 
-
-    
     </li>
-
-  
-    
-
-
-    <br>
-    <br>
-    <br>
-
-  
-    
-
   </div>
 </template>
 
@@ -40,7 +22,8 @@ export default {
 
     return{
       message:'',
-      quotes: []
+      quotes: [],
+      
 
     }
 
@@ -55,21 +38,16 @@ export default {
   
       this.quotes.push(this.message)
       this.message = " "
-      
-  
-      //console.log(this.quotes)
-      
-      
-
       },
-      removeElement(){
-        this.quotes.pop(this.input)
+
+    removeElement(input){
+      var quoteIndex = this.quotes.indexOf(input)
+  
+      this.quotes.splice(quoteIndex, 1)  
       }
+
     }
 
-  
-
-  
 }
 </script>
 
